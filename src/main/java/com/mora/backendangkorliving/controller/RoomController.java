@@ -21,26 +21,26 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    // ✅ Create Room (with optional image upload)
+    //  Create Room (with optional image upload)
     @PostMapping(consumes = {"multipart/form-data"})
     public RoomResponse createRoom(@ModelAttribute RoomRequest request,
                                    @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) throws IOException {
         return roomService.createRoom(request, imageFile);
     }
 
-    // ✅ Get Room by ID
+    //  Get Room by ID
     @GetMapping("/{id}")
     public RoomResponse getRoom(@PathVariable Long id) {
         return roomService.getRoom(id);
     }
 
-    // ✅ Get All Rooms
+    // Get All Rooms
     @GetMapping
     public List<RoomResponse> getAllRooms() {
         return roomService.getAllRooms();
     }
 
-    // ✅ Update Room (with optional new image upload)
+    //  Update Room (with optional new image upload)
     @PutMapping(value = "/{id}", consumes = {"multipart/form-data"})
     public RoomResponse updateRoom(@PathVariable Long id,
                                    @ModelAttribute RoomRequest request,
@@ -48,7 +48,7 @@ public class RoomController {
         return roomService.updateRoom(id, request, imageFile);
     }
 
-    // ✅ Delete Room
+    //  Delete Room
     @DeleteMapping("/{id}")
     public void deleteRoom(@PathVariable Long id) {
         roomService.deleteRoom(id);
